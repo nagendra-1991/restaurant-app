@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Foodie Restaurant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🍽️ Foodie Restaurant</h1>
+        <p>Fresh food. Great taste. Happy moments.</p>
+    </header>
+
+    <section class="hero">
+        <h2>Delicious Food, Delivered with Love!</h2>
+        <p>Explore our menu and place your order.</p>
+        <a href="#menu" class="btn">Explore Menu</a>
+    </section>
+
+    <main>
+        <h2 id="menu">Our Menu</h2>
+        <div id="menu-list" class="menu-grid">
+            Loading menu...
+        </div>
+
+        <section class="order-box">
+            <h2>Place Your Order</h2>
+            <form id="order-form">
+                <label for="customer">Your name</label>
+                <input id="customer" required maxlength="100"
+                       placeholder="Enter your name">
+
+                <label for="food">Select food</label>
+                <select id="food" required></select>
+
+                <label for="quantity">Quantity</label>
+                <input id="quantity" type="number" min="1" max="100"
+                       value="1" required>
+
+                <button class="btn" type="submit">Place Order</button>
+            </form>
+            <p id="result" role="status"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Foodie Restaurant | Built with Java & Jenkins</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

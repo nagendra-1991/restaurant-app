@@ -1,0 +1,124 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #292524;
+    background: #fffaf3;
+}
+
+header {
+    background: #9f2d20;
+    color: white;
+    padding: 22px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0 0 8px;
+}
+
+.hero {
+    text-align: center;
+    padding: 65px 20px;
+    color: white;
+    background: linear-gradient(120deg, #542018, #d65a2f);
+}
+
+.hero h2 {
+    font-size: 32px;
+}
+
+main {
+    max-width: 1050px;
+    margin: auto;
+    padding: 25px;
+}
+
+main > h2 {
+    text-align: center;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.food-card {
+    padding: 22px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #00000012;
+    border: 1px solid #f0e2d4;
+}
+
+.food-card h3 {
+    color: #9f2d20;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    color: white;
+    background: #b83a28;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #862719;
+}
+
+.order-box {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #00000012;
+}
+
+.order-box h2 {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 7px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    margin-top: 20px;
+}
+
+#result {
+    line-height: 1.6;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    color: white;
+    background: #292524;
+}
+
