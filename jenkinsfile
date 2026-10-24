@@ -1,54 +1,55 @@
-
 pipeline {
-    agent any
+agent any
 
-    options {
-        timestamps()
+```
+tools {
+    jdk 'JDK17'
+    maven 'Maven'
+}
+
+environment {
+    IMAGE_NAME     = 'restaurant-app'
+    CONTAINER_NAME = 'restaurant-app'
+    APP_PORT       = '8080'
+}
+
+stages {
+    stage('Checkout') {
+        steps {
+            git 
+        }
     }
 
-    environment {
-        IMAGE_NAME = 'restaurant-app'
-        CONTAINER_NAME = 'restaurant-app'
-        APP_PORT = '8080'
+    stage('Build and Test') {
+        steps {
+            sh 'mvn -B clean test'
+        }
     }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
+    stage('Package') {
+        steps {
+            sh 'mvn -B package -DskipTests'
+            sh 'test -f target/restaurant-app.jar'
         }
+    }
 
-        stage('Build and Test') {
-            steps {
-                sh 'mvn -B clean test'
-            }
+    stage('Build Docker Image') {
+        steps {
+            sh 'docker build -t ${IMAGE_NAME}:v.1.0 .'
         }
+    }
 
-        stage('Package') {
-            steps {
-                sh 'mvn -B package -DskipTests'
-                sh 'test -f target/restaurant-app.jar'
-            }
+    stage('Deploy') {
+        steps {
+            sh '''
+                docker rm -f ${CONTAINER_NAME} || true
+
+                docker run -d \
+                  --name ${CONTAINER_NAME} \
+                  --restart unless-stopped \
+                  -p ${APP_PORT}:8080 \
+                  ${IMAGE_NAME}:v.1.0
+            '''
         }
-
-        stage('Build Docker Image') {
-            steps {
-                sh 'docker build -t restaurant-app:latest .'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                sh '''
-                    docker rm -f restaurant-app || true
-                    docker run -d \
-                      --name restaurant-app \
-                      --restart unless-stopped \
-                      -p 8080:8080 \
-                      restaurant-app:latest
-                '''
-            }
-	}
-     }
+    }
 }
