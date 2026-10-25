@@ -50,7 +50,10 @@ jobs:
       - name: build docker image
         run: docker build -t restaurant-app:v1.0 .
       - name: tag image
-        run: docker tag restaurant-app:v1.0 nagendra915/restaurant-app
+        run: |
+          docker tag restaurant-app:v1.0 nagendra915/restaurant-app
+          docker tag restaurant-app:v1.0 nagendra915/restaurant-app:latest
+        
       - name: login to dockerhub
         uses: docker/login-action@v3
         with:
@@ -58,6 +61,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: push Docker Image
         run: |
-          docker push restaurant-app:v1.0 nagendra915/restaurant-app
+          docker push nagendra915/restaurant-app
+          docker push nagendra915/restaurant-app:latest
+          
         
           
