@@ -48,7 +48,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 7
       - name: build docker image
-        run: docker build -t restaurant-app:v.1.0 .
+        run: docker build -t restaurant-app:v1.0 .
       - name: tag image
         run: docker tag restaurant-app:v1.0 nagendra915/restaurant-app
       - name: login to dockerhub
@@ -58,6 +58,6 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: push Docker Image
         run: |
-          docker push restaurant-app:v.1.0 nagendra915/restaurant-app
+          docker push restaurant-app:v1.0 nagendra915/restaurant-app
         
           
